@@ -3,8 +3,12 @@ import pandas as pd
 import joblib
 
 
-# Load trained pipeline
-pipeline = joblib.load("tree3_pipeline.pkl")
+
+@st.cache_resource
+def load_pipeline():
+    return joblib.load("tree3_pipeline.pkl")
+
+pipeline = load_pipeline()
 
 st.title("MPI Status Prediction App (Decision Tree)")
 
