@@ -6,7 +6,7 @@ import joblib
 
 @st.cache_resource
 def load_pipeline():
-    return joblib.load("tree3_pipeline.pkl")
+    return joblib.load("dt_pipeline(1).pkl")
 
 pipeline = load_pipeline()
 
