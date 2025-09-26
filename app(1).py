@@ -1,13 +1,12 @@
 import streamlit as st
-
+import pandas as pd
 import joblib
-import tensorflow as tf
 
-# preprocessor and model loading
-preprocessor = joblib.load("/content/drive/MyDrive/preprocessor.pkl")
-model = tf.keras.models.load_model("/content/drive/MyDrive/NN_MPI_model1.keras")
 
-st.title("Neural Network MPI Status Prediction App")
+# Load trained pipeline
+pipeline = joblib.load("dt_pipeline.pkl")
+
+st.title("MPI Status Prediction App (Decision Tree)")
 
 st.write("Enter details to predict poverty status for individual")
 
@@ -227,7 +226,11 @@ if st.button("Predict MPI Status"):
     X = preprocessor.transform(data)
 
     # Predict with Keras model
-    prediction = model.predict(X)
-    st.success(f"Prediction: {prediction}")
+    #prediction = model.predict(X)
+    #st.success(f"Prediction: {prediction}")
+
+if st.button("Predict MPI Status"):
+    prediction = pipeline.predict(input_data)[0]
+    st.success(f"Predicted MPI Status: {prediction}")
 
 
