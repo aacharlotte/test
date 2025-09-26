@@ -4,7 +4,7 @@ import joblib
 
 
 # Load trained pipeline
-pipeline = joblib.load("tree2_pipeline(1).pkl")
+pipeline = joblib.load("tree3_pipeline.pkl")
 
 st.title("MPI Status Prediction App (Decision Tree)")
 
